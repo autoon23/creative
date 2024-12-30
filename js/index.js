@@ -25,6 +25,20 @@ function appStart() {
     index = 0;
   };
 
+  const updateKeyboard = (letter, color) => {
+    const keyBlock = document.querySelector(
+      `.keyboard-block[data-key='${letter.toLowerCase()}']`
+    );
+    if (
+      keyBlock &&
+      (!keyBlock.style.backgroundColor ||
+        keyBlock.style.backgroundColor !== "#6AAA64")
+    ) {
+      keyBlock.style.backgroundColor = color;
+      keyBlock.style.color = "white";
+    }
+  };
+
   const handleEnterKey = () => {
     let 맞은_갯수 = 0;
     for (let i = 0; i < 5; i++) {
@@ -36,10 +50,13 @@ function appStart() {
       if (letter === rightLetter) {
         맞은_갯수 += 1;
         block.style.backgroundColor = "#6AAA64";
+        updateKeyboard(letter, "#6AAA64");
       } else if (answer.includes(letter)) {
         block.style.backgroundColor = "#C9B458";
+        updateKeyboard(letter, "#C9B458");
       } else {
         block.style.backgroundColor = "#787C7E";
+        updateKeyboard(letter, "#787C7E");
       }
       block.style.color = "white";
     }
@@ -62,22 +79,38 @@ function appStart() {
     }
   };
 
-  const handleKeydown = (event) => {
-    const key = event.key.toUpperCase();
-    const keyCode = event.keyCode;
+  const handleInput = (key) => {
     const thisBlock = document.querySelector(
       `.board-block[data-index='${attepmts}${index}']`
     );
 
-    if (event.key === "Backspace") {
+    if (key === "BACKSPACE") {
       handleBackspace();
     } else if (index === 5) {
-      if (event.key === "Enter") {
+      if (key === "ENTER") {
         handleEnterKey();
       } else return;
-    } else if (keyCode >= 65 && keyCode <= 90) {
+    } else if (/^[A-Z]$/.test(key)) {
       thisBlock.innerText = key;
       index += 1;
+    }
+  };
+
+  const handleKeydown = (event) => {
+    const key = event.key.toUpperCase();
+    if (key === "BACKSPACE" || key === "ENTER" || /^[A-Z]$/.test(key)) {
+      handleInput(key);
+    }
+  };
+
+  const handleKeyboardClick = (event) => {
+    const key = event.target.dataset.key?.toUpperCase();
+    if (key) {
+      if (key === "BACK") {
+        handleInput("BACKSPACE"); // 백스페이스 역할 수행
+      } else {
+        handleInput(key);
+      }
     }
   };
 
@@ -94,6 +127,9 @@ function appStart() {
     timer = setInterval(setTime, 1000);
   };
 
+  document
+    .querySelector("footer")
+    .addEventListener("click", handleKeyboardClick);
   startTime();
   window.addEventListener("keydown", handleKeydown);
 }
