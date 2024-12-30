@@ -6,11 +6,17 @@ let timer;
 
 function appStart() {
   const displayGameOver = () => {
-    const div = document.createElement("div");
-    div.innerText = "게임이 종료되었습니다.";
-    div.style =
-      "display:flex; justify-content:center; align-items:center; position:absolute; top:40vh; left:38vw; background-color:white; width:200px; height:100px";
-    document.body.appendChild(div);
+    const overlay = document.createElement("div");
+    overlay.style =
+      "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); display: flex; justify-content: center; align-items: center; z-index: 9999;";
+
+    const message = document.createElement("div");
+    message.innerText = "축하드립니다!";
+    message.style =
+      "color: yellow; font-size: 3rem; font-weight: bold; text-align: center;";
+
+    overlay.appendChild(message);
+    document.body.appendChild(overlay);
   };
 
   const gameover = () => {
