@@ -1,0 +1,58 @@
+#menu_img {
+  width: 25px;
+}
+
+#top_icons_question {
+  width: 25px;
+}
+
+#top_icons_chart {
+  width: 25px;
+  margin-left: 5px;
+}
+
+#top_icons_setting {
+  width: 25px;
+  margin-left: 5px;
+}
+
+body {
+  height: 1500px;
+}
+
+header {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  width: 100vw;
+}
+
+.subject {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Playwrite DE VA Guides", cursive;
+  font-weight: 1000;
+  font-style: normal;
+  font-size: 30px;
+}
+
+.menu {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  margin-left: 15px;
+}
+
+.top_icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+}

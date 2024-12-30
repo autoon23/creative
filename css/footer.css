@@ -1,0 +1,48 @@
+footer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.keyboard-block {
+  width: 40px;
+  height: 60px;
+  background-color: rgb(130, 131, 132);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.keyboard-block-d {
+  width: 65px;
+  height: 60px;
+  background-color: rgb(130, 131, 132);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+#enter {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+#back {
+  width: 25px;
+  height: 25px;
+}
